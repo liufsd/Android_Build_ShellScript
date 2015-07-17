@@ -20,7 +20,8 @@ fi
 CDIR="$PWD"
 echo 'cdir:'$CDIR
 PROJECT_NAME='Demo'
-INFOPLIST_FILE=$CDIR'/$PROJECT_NAME/$PROJECT_NAME-Info.plist'
+INFOPLIST_FILE=$CDIR"/$PROJECT_NAME/$PROJECT_NAME-Info.plist"
+echo $INFOPLIST_FILE
 ICON_FOLDER=$CDIR"/$PROJECT_NAME/Resources/Images.xcassets/AppIcon.appiconset"
 echo $ICON_FOLDER
 
