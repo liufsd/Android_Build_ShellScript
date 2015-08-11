@@ -1,0 +1,41 @@
+#!/bin/sh 
+#gradle project to ant project
+#
+export PATH=/opt/local/bin/:/opt/local/sbin:$PATH:/usr/local/bin:
+rootPath="$PWD"
+sourcePath=$rootPath/src
+targetPath=$rootPath
+echo $sourcePath
+cpres(){
+	if [ ! -d "$2" ]; then
+		echo $2
+		mkdir $2
+	fi	
+	cp -r $1 $2
+}
+
+cp $sourcePath/main/AndroidManifest.xml  $targetPath/AndroidManifest.xml
+cpres $sourcePath/main/java/ $targetPath/src/
+cpres $sourcePath/main/res/ $targetPath/res/
+
+rm $sourcePath/main/AndroidManifest.xml
+rm -rf $sourcePath/main/
+rm -rf $sourcePath/androidTest
+
+
+#######other config
+#1.build.gradle also need update by yourself
+# sourceSets {
+#      main {
+#          java.srcDirs = ['src']
+#          res.srcDirs = ['res']
+#          assets.srcDirs = ['assets']
+#          jni.srcDirs = ['jni']
+#          jniLibs.srcDirs = ['libs']
+#          aidl.srcDirs = ['src']
+#          manifest.srcFile 'AndroidManifest.xml'
+#      }
+#  }
+
+#2.create build.xml
+#3.create project.properties
